@@ -2,20 +2,20 @@
 	//Начало изменений
 	//
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'nodejs:v1'
+            args '-v $HOME/.m2:/root/.m2'
+        }
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-//------------------
-	step	{
-	[$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: '.', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: 'images:ver2']
-			}
-//--------------------
+                sh 'build -t xiozip/nodejs:v1'
             }
         }
-        stage('Test') {
+    }
+	        stage('Test') {
             steps {
                 echo 'Testing..'
             }
@@ -26,6 +26,10 @@ pipeline {
             }
         }
     }
-}
+
+//------------------
+
+//--------------------
+
 
 
