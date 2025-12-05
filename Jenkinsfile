@@ -2,7 +2,7 @@
 	//Начало изменений
 	//
 stage('Checkout Github') {
-   git branch: 'main', url: 'https://github.com/xiozip/jenkins'
+   git branch: 'main', credentialsId: 'GitHUB', url: 'https://github.com/xiozip/jenkins'
    }
    stage('Install node dependencies') {
     sh 'npm install'
