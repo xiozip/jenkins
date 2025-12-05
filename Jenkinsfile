@@ -1,29 +1,20 @@
-pipeline {
-	agent any
-	tools {
-		nodejs 'NodeJS'
-	}
 	environment {
 		DOCKER_HUB_CREDENTIALS_ID = 'DockerHUB'
 		DOCKER_HUB_REPO = 'iquantc/iquant-app'
 	}
-	stages {
-		stage('Checkout Github'){
-			steps {
-				git branch: 'main', credentialsId: 'jen-doc-git', url: 'https://github.com/xiozip/jenkins'
-			}
-		}		
-		stage('Install node dependencies'){
-			steps {
-				sh 'npm install'
-			}
-		}
-		stage('Test Code'){
-			steps {
-				sh 'npm test'
-			}
-		}
-		stage('Build Docker Image'){
+	//
+	//Начало изменений
+	//
+stage('Checkout Github') {
+   git branch: 'main', credentialsId: 'jen-doc-git', url: 'https://github.com/xiozip/jenkins'
+   }
+   stage('Install node dependencies') {
+    sh 'npm install'
+}
+stage('Test Code') {
+    sh 'npm test'
+}
+stage('Build Docker Image'){
 			steps {
 				script {
 					dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
@@ -44,16 +35,12 @@ pipeline {
 				}
 			}
 		}
-		stage('Install Kubectl'){
-			steps {
-				sh '''
-				curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                		chmod +x kubectl
-                		mv kubectl /usr/local/bin/kubectl
-				'''
-			}
-		}
-		
+		stage('some block') {
+			sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+			chmod +x kubec	tl
+			mv kubectl /usr/local/bin/kubectl
+			'''
+}
 	post {
 		success {
 			echo 'Build&Deploy completed succesfully!'
