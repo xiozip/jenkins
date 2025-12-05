@@ -1,30 +1,9 @@
 	//
 	//Начало изменений
 	//
-stage('Build Docker Image'){
-			steps {
-				script {
-					dockerImage = docker.build("${DOCKER_HUB_REPO}:latest")
-				}
-			}
+	stage('Build Docker Image'){
+			step([$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: 'xiozip/docker-image', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: ''])
 		}
-		stage('Trivy Scan'){
-			steps {
-				sh 'trivy --severity HIGH,CRITICAL --no-progress image --format table -o trivy-scan-report.txt ${DOCKER_HUB_REPO}:latest'
-			}
-		}
-		stage('Push Image to DockerHub'){
-			steps {
-				script {
-					docker.withRegistry('https://registry.hub.docker.com', "${DOCKER_HUB_CREDENTIALS_ID}"){
-						dockerImage.push('latest')
-					}
-				}
-			}
-		}
-		stage('some block') {
-			sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-			chmod +x kubec	tl
-			mv kubectl /usr/local/bin/kubectl
-			'''
-}
+	stage('End '){
+		echo 'Pipline end'
+	}		
