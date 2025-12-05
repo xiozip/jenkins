@@ -9,7 +9,7 @@ pipeline {
         docker { image 'node:alpine' }
       }
       steps {
-        sh 'uname -a'
+        sh 'ip a'
 		}
 	}
 }
