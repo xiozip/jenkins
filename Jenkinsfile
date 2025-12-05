@@ -9,16 +9,7 @@ pipeline {
         docker { image 'node:alpine' }
       }
       steps {
-        sh 'docker --version'
-      }
-    }
-    stage('Front-end') {
-      agent {
-        docker { image 'node:alpine' }
-      }
-      steps {
-        sh 'docker --version'
-      }
-    }
-  }
+        sh 'uname -a'
+		}
+	}
 }
