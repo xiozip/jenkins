@@ -1,9 +1,9 @@
 	//
 	//Начало изменений
 	//
-pipeline {
-    agent {
-        docker {
+pipeline {    
+	agent {        
+		docker {
             image 'nodejs:v1'
             args '-v $HOME/.m2:/root/.m2'
         }
@@ -14,14 +14,5 @@ pipeline {
                 sh 'ls -la'
             }
         }
-	        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+	}
+}
