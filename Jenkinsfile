@@ -9,7 +9,7 @@ pipeline {
         docker { image 'node:alpine' }
       }
       steps {
-        sh 'mvn --version'
+        sh 'docker --version'
       }
     }
     stage('Front-end') {
@@ -17,7 +17,7 @@ pipeline {
         docker { image 'node:alpine' }
       }
       steps {
-        sh 'node --version'
+        sh 'docker --version'
       }
     }
   }
