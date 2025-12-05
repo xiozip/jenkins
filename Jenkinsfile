@@ -12,7 +12,7 @@ pipeline {
         sh 'ip a'
 		}
 	steps {
-	'sh uname -a'
+	sh 'uname -a'
 	}		
 	}
 }
