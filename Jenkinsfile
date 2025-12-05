@@ -8,7 +8,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-			step([$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: 'https://github.com/xiozip/jenkins', fromRegistry: [], pushCredentialsId: 'DockerHUB', pushOnSuccess: false, tagsString: 'my-images:v1'])
+//------------------
+	step	{
+	[$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: '.', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: 'images:ver2']
+			}
+//--------------------
             }
         }
         stage('Test') {
