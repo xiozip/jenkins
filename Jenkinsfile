@@ -1,18 +1,14 @@
 	//
 	//Начало изменений
 	//
-pipeline {    
-	agent {        
-		docker {
-            image 'nodejs:v1'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
+pipeline {
+    agent { dockerfile true }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'ls -la'
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
-	}
+    }
 }
