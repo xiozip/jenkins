@@ -1,15 +1,6 @@
 	//
 	//Начало изменений
 	//
-//stage('Checkout Github') {
- //  git switch: 'main', credentialsId: 'GitHUB', url: 'https://github.com/xiozip/jenkins'
-//   }
-   stage('Install node dependencies') {
-    sh 'npm install'
-}
-stage('Test Code') {
-    sh 'npm test'
-}
 stage('Build Docker Image'){
 			steps {
 				script {
