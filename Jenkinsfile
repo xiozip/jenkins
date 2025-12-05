@@ -1,9 +1,24 @@
 	//
 	//Начало изменений
 	//
-	stage('Build Docker Image'){
-			step([$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: 'xiozip/nodejs:v1', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: ''])
-		}
-	stage('End '){
-		echo 'Pipline end'
-	}		
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
