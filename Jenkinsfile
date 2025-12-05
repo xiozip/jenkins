@@ -1,12 +1,8 @@
-	environment {
-		DOCKER_HUB_CREDENTIALS_ID = 'DockerHUB'
-		DOCKER_HUB_REPO = 'iquantc/iquant-app'
-	}
 	//
 	//Начало изменений
 	//
 stage('Checkout Github') {
-   git branch: 'main', credentialsId: 'jen-doc-git', url: 'https://github.com/xiozip/jenkins'
+   git branch: 'main', url: 'https://github.com/xiozip/jenkins'
    }
    stage('Install node dependencies') {
     sh 'npm install'
@@ -40,13 +36,4 @@ stage('Build Docker Image'){
 			chmod +x kubec	tl
 			mv kubectl /usr/local/bin/kubectl
 			'''
-}
-	post {
-		success {
-			echo 'Build&Deploy completed succesfully!'
-		}
-		failure {
-			echo 'Build&Deploy failed. Check logs.'
-		}
-	}
 }
