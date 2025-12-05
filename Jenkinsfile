@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'build -t xiozip/nodejs:v1'
+                sh 'ls -la'
             }
         }
     }
