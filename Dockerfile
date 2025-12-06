@@ -1,5 +1,5 @@
 # Use an official alpine nodeJS image as the base image
-FROM debian:12-slim
+FROM debian:stable
 
 # Set working directory in the container
 WORKDIR /app
