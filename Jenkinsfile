@@ -2,6 +2,8 @@
 	//Начало изменений
 	//
 pipeline {
+	kubeconfig(credentialsId: 'Minikube-secretext', serverUrl: 'https://192.168.49.2:8443') {
+ 
   agent {
     kubernetes {
       yaml '''
