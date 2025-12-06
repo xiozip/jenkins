@@ -18,7 +18,7 @@ pipeline {
     stage('Run IP A ') {
       steps {
         container('debian') {
-          sh 'uname a'
+          sh 'uname -a'
         }
       }
     }
