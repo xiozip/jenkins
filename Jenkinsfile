@@ -6,8 +6,8 @@ pipeline {
         kind: Pod
         spec:
           containers:
-          - name: maven
-            image: maven:alpine
+          - name: debian
+            image: debian:latest
             command:
             - cat
             tty: true
@@ -15,10 +15,10 @@ pipeline {
     }
   }
   stages {
-    stage('Run IP A ') {
+    stage('ping ya.ru') {
       steps {
-        container('maven') {
-          sh 'ip a'
+        container('debian') {
+          sh 'ping ya.ru'
         }
       }
     }
