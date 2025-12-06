@@ -1,20 +1,17 @@
 # Use an official alpine nodeJS image as the base image
-FROM debian:12-slim
+FROM debian
 
 # Set working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
 
-# Install only production nodeJS dependencies in Docker Image
-RUN npm install --only=production
+RUN apt-get update
+RUN apt-get -y install tzdata
+RUN apt-get -y install apache2
 
 # Copy the rest of the application code into the container
 COPY . .
 
-# Expose the app on a port
-EXPOSE 3000
 
-# Command that runs the app
-CMD ["npm", "start"]
+
+

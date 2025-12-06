@@ -2,7 +2,7 @@
 	//Начало изменений
 	//
 pipeline {
-  agent none
+  agent any
   stages {
   stage('Build OS |->||->') {
       agent {
