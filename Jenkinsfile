@@ -15,10 +15,10 @@ pipeline {
     }
   }
   stages {
-    stage('ping ya.ru') {
+    stage('uname -a') {
       steps {
         container('debian') {
-          sh 'ping ya.ru'
+          sh 'uname -a'
         }
       }
     }
