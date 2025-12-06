@@ -1,6 +1,3 @@
-	//
-	//Начало изменений
-	//
 pipeline {
   agent {
     kubernetes {
@@ -18,10 +15,10 @@ pipeline {
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Run IP A ') {
       steps {
         container('maven') {
-          sh 'mvn -version'
+          sh 'ip a'
         }
       }
     }
