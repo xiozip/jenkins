@@ -2,15 +2,6 @@
 	//Начало изменений
 	//
 pipeline {
-	  stages {
-    stage('Buid docker images') {
-      agent {
-        docker { image 'node:alpine' }
-		}
-	}
-}
- 	stage {
-		stage('Kubernetes Deploy POD ') {
   agent {
     kubernetes {
       yaml '''
@@ -18,11 +9,21 @@ pipeline {
         kind: Pod
         spec:
           containers:
-          - name: node
-            image: node:alpine
+          - name: debian
+            image: debian:latest
             command:
+            - cat
+            tty: true
         '''
-		}
-	}
+    }
+  }
+  stages {
+    stage('Ping YA.RU') {
+      steps {
+        container('debian') {
+          sh 'uname -a'
+        }
+      }
+    }
   }
 }
