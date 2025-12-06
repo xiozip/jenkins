@@ -4,13 +4,17 @@
 pipeline {
   agent none
   stages {
-    stage('Back-end') {
+  stage('Build OS |->||->') {
       agent {
-        docker { image 'debian:latest' }
+        docker { image 'debian:lates' }
       }
-      steps {
+      //
+	  
+	  steps {
         sh 'ip a'
 		}
+		
+	//	
 	}
 }
 }
