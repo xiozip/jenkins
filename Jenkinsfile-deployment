@@ -10,8 +10,10 @@ agent {
 		}
 stages {
 //Начинаем шаги //	
-			stage('apt установка софта ') {
+		stage('установка софта ') {
+				steps {
 				sh ' RUN apt update && apt -y install tzdata &&apt -y install apache2'
+				}
 			}
 		stage('Установка Kube ctl') {	
 			steps {
