@@ -3,11 +3,12 @@ FROM debian:latest
 #
 RUN useradd -ms /bin/bash cdci
 RUN usermod -aG sudo cdci
+USER cdci
 #
 RUN sudo groupadd docker
 RUN sudo usermod -aG docker $USER
 RUN newgrp docker
-USER cdci
+
 # Set working directory in the container
 
 RUN apt update
