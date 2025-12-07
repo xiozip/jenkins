@@ -15,7 +15,7 @@ stages {
 	}
 stage ('Установка Kube chmod') {
 		steps {
-		sh 'chmod +x  kubectl && cp kubectl /usr/local/bin/kubectl'	
+		sh 'chmod +x  kubectl' 	
 		}	
 }
 stage('Deployment') {
