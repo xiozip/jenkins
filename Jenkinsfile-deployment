@@ -24,6 +24,24 @@ stage('Какая ОС ') {
 	  sh 'uname -a'	  
 	  }
 	}  
+//------------
+stage('Deployment') {
+	agent {
+		kubernetes {
+			yaml '''
+				apiVersion: v1
+				kind: Deployment
+				spec:
+				replicas: 2
+				spec:
+				containers:
+				- name: debian
+				image: debian:latest
+				'''
+       }
+    }
+}	
+//------------
 }
 //
     post {
