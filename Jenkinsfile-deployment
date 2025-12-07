@@ -2,23 +2,22 @@ pipeline {
           environment {
 		DOCKER_IMAGE = 'debian:latest'
 		}
-// agent { dockerfile true }
-agent {
-        docker { image 'debian:latest' }
-    }
+agent { dockerfile true }
+//agent {  docker { image 'debian:latest' }	}
+//
 stages {
 //Начинаем шаги //	
-		stage('установка софта ') {
-				steps {
-				//sh 'apt update && apt -y install tzdata &&apt -y install apache2'
-				sh 'ip a '
-				}
-			}
-		stage('Установка Kube ctl') {	
-			steps {
-				sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" '
+	stage('установка софта ') {
+		steps {
+		//sh 'apt update && apt -y install tzdata &&apt -y install apache2'
+		sh 'ip a '
 			}
 		}
+	stage('Установка Kube ctl') {	
+		steps {
+		sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" '
+		}
+	}
 		//--||    ||--//
 stage('kubernetes yaml Deployment') {
 	  steps {
