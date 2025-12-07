@@ -15,22 +15,8 @@ pipeline {
 		}
 		//--||    ||--//
 	stage('kubernetes yaml Deployment') {
-		agent {
-			kubernetes {
-				yaml '''
-				apiVersion: v1
-				kind: Deployment
-				spec:
-				replicas: 2
-				spec:
-				containers:
-				- name: debian
-				image: debian:latest
-				'''
-		}
-	}
+      sh 'ip a'
 }
-
 	post {
 		success {
 			echo 'Build&Deploy completed succesfully!'
