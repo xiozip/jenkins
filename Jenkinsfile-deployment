@@ -18,11 +18,13 @@ stage('Сетевые настройки ') {
 	  step {
 	  sh 'ip a'
 	  }
-	  step {
+}
+stage('Какая ОС ') {
+	 step {
 	  sh 'Какая ОС'	  
 	  }
-      }
-     }
+	}  
+}
 //
     post {
         always {
