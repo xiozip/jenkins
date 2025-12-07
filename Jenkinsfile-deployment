@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-		docker { image 'debian:latest' }
-		}
+
 	environment {
         // The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
         // For example:
@@ -10,8 +8,10 @@ pipeline {
     }
 	stages {
 	//Начинаем шаги //	
-		stage('Build') {
-
+		stage('Сборка') {
+			agent {
+				docker { image 'debian:latest' }
+			}
 		}
 		stage('Установка Kube ctl') {	
 			steps {
