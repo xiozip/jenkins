@@ -1,6 +1,6 @@
 pipeline {
-		agent { dockerfile true }
-		environment {
+   agent { dockerfile true }
+          environment {
 			// The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
 			// For example:
 			//   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
@@ -14,20 +14,10 @@ stages {
 			}
 		}
 		//--||    ||--//
-	stage('kubernetes yaml Deployment') {
-      
-	  
+stage('kubernetes yaml Deployment') {
 	  steps {
 	  sh 'ip a'
 	  }
-}
-	post {
-		success {
-			echo 'Build&Deploy completed succesfully!'
-		}
-		failure {
-			echo 'Build&Deploy failed. Check logs.'
-			}
-		}
-	}
+     }
+    }
 }
