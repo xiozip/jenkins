@@ -1,9 +1,9 @@
 pipeline {
 		agent { dockerfile true }
 		environment {
-        // The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
-        // For example:
-        //   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
+			// The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
+			// For example:
+			//   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
         MY_KUBECONFIG = credentials('111')
     }
 	stages {
@@ -14,12 +14,22 @@ pipeline {
 			}
 		}
 		//--||    ||--//
-	stage('Kubectl get pods') {
-            steps {
-                sh("kubectl --kubeconfig $MY_KUBECONFIG get pods")
-            }
-        }
+	stage('kubernetes yaml Deployment') {
+		agent {
+			kubernetes {
+				yaml '''
+				apiVersion: v1
+				kind: Deployment
+				spec:
+				replicas: 2
+				spec:
+				containers:
+				- name: debian
+				image: debian:latest
+				'''
+		}
 	}
+}
 
 	post {
 		success {
