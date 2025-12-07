@@ -5,21 +5,22 @@ pipeline {
         //   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
         MY_KUBECONFIG = credentials('111')
     }
-	agent {
-        docker { image 'debian:latest' }
-    }
 	stages {
 	//Начинаем шаги //	
-	
-		stage('Install Kubectl'){
-			steps {
-				sh '''
-				curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                		chmod +x kubectl
-				'''
+		stage('Build') {
+			agent {
+			docker { image 'debian:latest' }
 			}
 		}
-stage('Example stage 1') {
+		stage('Install Kubectl'){	
+			steps {
+				sh '	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" '
+			}
+			steps {
+				sh 'chmod +x kubectl '
+			}
+		}
+	stage('Kubectl get pods') {
             steps {
                 sh("kubectl --kubeconfig $MY_KUBECONFIG get pods")
             }
