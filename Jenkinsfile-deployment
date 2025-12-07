@@ -4,7 +4,7 @@ pipeline {
 		}
 // agent { dockerfile true }
 agent {
-        docker { image "${DOCKER_IMAGE}" }
+        docker { images "${DOCKER_IMAGE}" }
     }
 stages {
 //Начинаем шаги //	
