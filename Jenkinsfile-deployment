@@ -14,12 +14,12 @@ stages {
 		}
 	}
 		//--||    ||--//
-stage('uname /-/  ip a ') {
+stage('Сетевые настройки ') {
 	  steps {
 	  sh 'ip a'
 	  }
 	  steps {
-	  sh 'uname -a'	  
+	  sh 'Какая ОС'	  
 	  }
       }
      }
