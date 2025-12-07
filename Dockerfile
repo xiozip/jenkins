@@ -9,3 +9,4 @@ RUN apt -y install apache2
 RUN apt -y install curl
 RUN apt -y install iproute2
 RUN apt -y install apt-file 
+RUN apt -y install sudo
