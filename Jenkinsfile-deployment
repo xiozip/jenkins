@@ -1,6 +1,8 @@
 pipeline {
 		agent { dockerfile true }
-		agent {docker { image 'debian:latest' }	}
+		agent {docker { image  debian:latest 
+		}	
+	}
 		environment {
         // The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
         // For example:
