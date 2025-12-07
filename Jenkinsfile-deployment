@@ -15,10 +15,10 @@ stages {
 	}
 		//--||    ||--//
 stage('Сетевые настройки ') {
-	  steps {
+	  step {
 	  sh 'ip a'
 	  }
-	  steps {
+	  step {
 	  sh 'Какая ОС'	  
 	  }
       }
