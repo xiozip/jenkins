@@ -7,5 +7,5 @@ RUN apt update
 RUN apt -y install tzdata
 RUN apt -y install apache2
 RUN apt -y install curl
-RUN apt -y install ip
+RUN apt -y install iproute2
 RUN apt -y install apt-file 
