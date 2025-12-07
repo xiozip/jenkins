@@ -4,7 +4,7 @@ pipeline {
 		}
 // agent { dockerfile true }
 agent {
-        docker { images debian:latest }
+        docker { image 'debian:latest' }
     }
 stages {
 //Начинаем шаги //	
