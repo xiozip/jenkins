@@ -1,9 +1,9 @@
 # Use an official alpine nodeJS image as the base image
 FROM debian:latest
 #
-RUN useradd -ms /bin/bash cdci
-RUN usermod -aG sudo cdci
-USER cdci
+#RUN useradd -ms /bin/bash cdci
+#RUN usermod -aG sudo cdci
+#USER cdci
 #
 
 # Set working directory in the container
