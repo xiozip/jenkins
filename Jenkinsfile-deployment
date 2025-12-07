@@ -14,10 +14,37 @@ stages {
 		}
 	}
 		//--||    ||--//
-stage('ip a') {
+stage('uname /-/  ip a ') {
 	  steps {
 	  sh 'ip a'
 	  }
+	  steps {
+	  sh 'uname -a'	  
+	  }
+      }
      }
+//
+    post {
+        always {
+            echo 'The jenkins-build repository run is finished.'
+        }
+        changed {
+            echo 'There is a different result than the last run.'
+        }
+        fixed {
+            echo 'This run fixed problems from the previous one.'
+        }
+        regression {
+            echo 'This run had regressions from the previous run.'
+        }
+        aborted {
+            echo 'This run was aborted.'
+        }
+        failure {
+            echo 'This run failed.'
+        }
+        success {
+            echo 'This run succeeded.'
+        }
     }
 }
