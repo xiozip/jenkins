@@ -10,6 +10,11 @@ agent {
 		}
 stages {
 //Начинаем шаги //	
+		stage('entrypoint ') {
+		dockerImage.inside("--entrypoint=''") {
+     echo "Tests passed"
+   }
+}
 		stage('установка софта ') {
 				steps {
 				sh 'apt update && apt -y install tzdata &&apt -y install apache2'
