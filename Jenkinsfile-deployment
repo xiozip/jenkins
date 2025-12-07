@@ -1,4 +1,7 @@
 pipeline {
+	agent {
+		docker { image 'debian:latest' }
+		}
 	environment {
         // The MY_KUBECONFIG environment variable will be assigned the value of a temporary file.
         // For example:
@@ -8,9 +11,7 @@ pipeline {
 	stages {
 	//Начинаем шаги //	
 		stage('Build') {
-			agent {
-			docker { image 'debian:latest' }
-			}
+
 		}
 		stage('Install Kubectl'){	
 			steps {
