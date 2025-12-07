@@ -8,9 +8,6 @@ pipeline {
           containers:
           - name: debian
             image: debian:latest
-            command:
-            - cat
-            tty: true
         '''
     }
   }
