@@ -5,9 +5,9 @@ pipeline {
 			// For example:
 			//   /home/user/.jenkins/workspace/cred_test@tmp/secretFiles/546a5cf3-9b56-4165-a0fd-19e2afe6b31f/kubeconfig.txt
         MY_KUBECONFIG = credentials('111')
-    }
-	stages {
-	//Начинаем шаги //	
+		}
+stages {
+//Начинаем шаги //	
 		stage('Установка Kube ctl') {	
 			steps {
 				sh '	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" '
@@ -15,7 +15,11 @@ pipeline {
 		}
 		//--||    ||--//
 	stage('kubernetes yaml Deployment') {
-      sh 'ip a'
+      
+	  
+	  steps {
+	  sh 'ip a'
+	  }
 }
 	post {
 		success {
@@ -23,6 +27,7 @@ pipeline {
 		}
 		failure {
 			echo 'Build&Deploy failed. Check logs.'
+			}
 		}
 	}
 }
