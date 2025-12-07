@@ -12,7 +12,7 @@ stages {
 //Начинаем шаги //	
 		stage('установка софта ') {
 				steps {
-				sh ' RUN apt update && apt -y install tzdata &&apt -y install apache2'
+				sh 'apt update && apt -y install tzdata &&apt -y install apache2'
 				}
 			}
 		stage('Установка Kube ctl') {	
