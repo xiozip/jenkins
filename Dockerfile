@@ -8,9 +8,3 @@ FROM debian:latest
 RUN apt update
 RUN apt -y install tzdata
 RUN apt -y install apache2
-
-
-
-
-
-
