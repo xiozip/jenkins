@@ -8,11 +8,22 @@ agent { dockerfile true }
 
 stages {
 //Начинаем шаги //	
-	stage('Установка Kube ctl') {	
-	 steps{
-	sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-     '''
-	 }
+stage('Установка Kube ctl') {	
+   agent {
+      kubernetes {
+         yaml '''
+            apiVersion: v1
+            kind: Deployment
+            spec:
+              replicas: 2
+            spec:
+             containers:
+             - name: debian
+            image: debian:latest
+            '''
+       }
+    }
+//
 }
 stage('Deployment') {
  steps{
