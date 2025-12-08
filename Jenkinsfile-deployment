@@ -16,7 +16,7 @@ stages {
 }
 stage('Deployment') {
  steps{
-	sh '../kubectl create -f deployment.yaml -n lesson-4'
+	sh './kubectl create -f deployment.yaml -n lesson-4'
 	}
 }	
 		//--||    ||--//
