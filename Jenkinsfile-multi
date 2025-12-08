@@ -2,15 +2,27 @@ pipeline {
     agent any
 	stages {
 //-------------------------------------------------- begin stages 
-stage('1 images') {
+stage('Сборка образа') {
             agent {
                 docker { image 'debian:latest' }
             }
-            steps {
-                sh 'ip a'
-            }
         }
-stage('2 images') {
+stage('Кубернетес') {
+   agent { kubernetes {
+         yaml '''
+            apiVersion: v1
+            kind: Deployment
+            spec:
+              replicas: 2
+            spec:
+             containers:
+             - name: debian
+            image: debian:latest
+            '''
+			}
+		}
+        }
+stage('Сборка 2 образа') {
             agent {
                 docker { image 'debian:latest' }
             }
@@ -18,16 +30,6 @@ stage('2 images') {
                 sh 'uname -a'
             }
         }
-stage('3 images') {
-            agent {
-                docker { image 'debian:latest' }
-            }
-            steps {
-                sh 'ip a'
-            }
-        }
-        
-
 //--------------------------------------------------End stages
     }
 //--------------------------------------------------End pipline
