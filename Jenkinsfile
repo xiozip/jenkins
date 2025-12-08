@@ -2,7 +2,7 @@ pipeline {
    agent {
       kubernetes {
          yaml '''
-            apiVersion: apps/v1
+            apiVersion: v1
             kind: Deployment
             metadata:
             name: debian-latest
