@@ -7,7 +7,7 @@ agent { dockerfile true }
 stages {
 //Начинаем шаги //   
    stage('Установка Kube cl') { 
-	steps{
+	script {
 	sh 	'whoami'
 	}
     steps {
