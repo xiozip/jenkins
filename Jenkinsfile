@@ -3,12 +3,12 @@ pipeline {
       kubernetes {
          yaml '''
             apiVersion: apps/v1
-		  kind: Deployment
+            kind: Deployment
             metadata:
             name: debian-latest
             spec:
             replicas: 2
-		  strategy:
+            strategy:
             type: RollingUpdate
             selector:
             matchLabels:
