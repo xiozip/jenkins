@@ -6,12 +6,15 @@ agent { dockerfile true }
 
 stages {
 //Начинаем шаги //   
-   stage('Установка Kube cl') {   
+   stage('Установка Kube cl') { 
+	steps{
+	sh 	'whoami'
+	}
     steps {
      sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" 
 	 chmod +x kubectl 
 	 export PATH="$PATH:$pwd"
-	 mv kubectl /usr/local/bin/kubctl
+	 mv kubectl /usr/local/bin/kubectl
 	 '''
     }
 }
