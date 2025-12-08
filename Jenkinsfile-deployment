@@ -2,12 +2,14 @@ pipeline {
           environment {
 		DOCKER_IMAGE = 'debian:latest'
 		}
-agent { dockerfile true }
 //agent {  docker { image 'debian:latest' }	}
 //
 
 stages {
 //Начинаем шаги //	
+stage ('build dockerfile') {
+	agent { dockerfile true }
+}
 stage('Установка Kube ctl') {	
    agent {
       kubernetes {
