@@ -8,7 +8,7 @@ stages {
 //Начинаем шаги //   
    stage {
 	steps {
-	sh 	'whoami'
+	sh 'whoami'
 	}
  }
    stage('Установка Kube cl') { 
