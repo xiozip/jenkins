@@ -1,52 +1,33 @@
 pipeline {
-	agent any
-	agent {  docker { image 'debian:latest' }	
-	}
-//agent {  docker { image 'debian:latest' }	}
+
+//agent { dockerfile true }
+agent {  docker { image 'debian:latest' }   }
 //
 
 stages {
-//Начинаем шаги //	
-
+//Начинаем шаги //   
+   stage('Установка Kube ctl') {   
+    steps{
+   sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+     chmod +x kubectl && mv kubectl /usr/local/bin/kubectl'''
+    }
+}
 stage('Deployment') {
  steps{
-	sh './kubectl create -f deployment.yaml -n lesson-4 --validate=false'
-	}
-}	
-		//--||    ||--//
+   sh 'kubectl create -f deployment.yaml -n lesson-4'
+   }
+}   
+      //--||    ||--//
 stage('Сетевые настройки ') {
-	  steps {
-	  sh 'ip a'
-	  }
+     steps {
+     sh 'ip a'
+     }
 }
 stage('Какая ОС ') {
-	 steps {
-	  sh 'uname -a'	  
-	  }
-	}  	
+    steps {
+     sh 'uname -a'    
+     }
+   }     
 }
 //
-    post {
-        always {
-            echo 'The jenkins-build repository run is finished.'
-        }
-        changed {
-            echo 'There is a different result than the last run.'
-        }
-        fixed {
-            echo 'This run fixed problems from the previous one.'
-        }
-        regression {
-            echo 'This run had regressions from the previous run.'
-        }
-        aborted {
-            echo 'This run was aborted.'
-        }
-        failure {
-            echo 'This run failed.'
-        }
-        success {
-            echo 'This run succeeded.'
-        }
-    }
 }
