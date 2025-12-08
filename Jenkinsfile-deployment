@@ -5,8 +5,9 @@ pipeline {
 
 stages {
 //Начинаем шаги //	
-stage ('build dockerfile') {
-	agent {  docker { image 'debian:latest' }	}
+stage ('Сборка образа') {
+	agent {  docker { image 'debian:latest' }	
+	}
 }
 stage('Установка Kube ctl') {	
    agent { kubernetes {
