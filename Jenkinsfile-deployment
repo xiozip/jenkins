@@ -1,5 +1,5 @@
 pipeline {
-	agent none
+	agent any
 //agent {  docker { image 'debian:latest' }	}
 //
 
@@ -9,8 +9,7 @@ stage ('build dockerfile') {
 	agent {  docker { image 'debian:latest' }	}
 }
 stage('Установка Kube ctl') {	
-   agent {
-      kubernetes {
+   agent { kubernetes {
          yaml '''
             apiVersion: v1
             kind: Deployment
