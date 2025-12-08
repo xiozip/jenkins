@@ -14,6 +14,8 @@ spec:
       labels:
         app: nginx
     spec:
+    securityContext:
+    runAsUser: 1000 # default UID of jenkins user in agent image
       containers:
       - name: debian
         image: debian:latest
