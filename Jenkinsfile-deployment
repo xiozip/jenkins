@@ -14,7 +14,7 @@ stages {
 stage('Deployment') {
  steps{
    //sh './kubectl create -f deployment.yaml -n lesson-4 --validate=false'
-   sh  './kubectl get pods -A'
+   sh  'chmod +x ./kubectl &&./kubectl get pods -A'
    }
 }   
       //--||    ||--//
