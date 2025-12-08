@@ -10,11 +10,8 @@ stages {
     steps ('Скачиваем бинарник'){
      sh '''curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" '''
     }
-	steps ('Права на выполнение'){
-	sh 'chmod +x ./kubectl'
-	}
-	steps ('Move '){
-	sh 'mv ./kubectl /usr/local/bin/kubectl'	
+	steps ('Права на выполнение MV'){
+	sh ''chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl ''
 	}
 }
 stage('Deployment') {
