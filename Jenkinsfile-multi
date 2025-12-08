@@ -1,12 +1,8 @@
 pipeline {
-    agent any
+     agent any
 	stages {
 //-------------------------------------------------- begin stages 
-stage('Сборка образа') {
-            agent {
-                docker { image 'debian:latest' }
-            }
-        }
+
 stage('Кубернетес') {
    agent { kubernetes {
          yaml '''
