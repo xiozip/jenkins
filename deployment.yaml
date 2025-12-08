@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: debian
+  name: debian-latest
   labels:
-    app: web
+    app: nginx
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: web
-  replicas: 5
-  strategy:
-    type: RollingUpdate
+      app: nginx
   template:
     metadata:
       labels:
-        app: web
+        app: nginx
     spec:
       containers:
-       —name: debian
-          image: debian:latest
-          ports:
-           —containerPort: 80
+      - name: debian
+        image: debian:latest
+        ports:
+        - containerPort: 80
