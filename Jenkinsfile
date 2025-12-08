@@ -2,18 +2,27 @@ pipeline {
    agent {
       kubernetes {
          yaml '''
-            apiVersion: v1
-            kind: Deployment
-            metadata:
-            name: debian-latest
-            spec:
-            replicas: 2
-            spec:
-            containers:
-            - name: debian
-            image: debian:latest
-            ports:
-            - containerPort: 80
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: debian-latest
+        image: debian:latest
+        ports:
+        - containerPort: 80
             '''
        }
     }
