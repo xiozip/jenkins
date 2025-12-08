@@ -1,7 +1,5 @@
 pipeline {
-          environment {
-		DOCKER_IMAGE = 'debian:latest'
-		}
+	agent none
 //agent {  docker { image 'debian:latest' }	}
 //
 
