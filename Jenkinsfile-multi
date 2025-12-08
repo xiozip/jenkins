@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+	stages {
+//-------------------------------------------------- begin stages 
+stage('1 images') {
+            agent {
+                docker { image 'debian:latest' }
+            }
+            steps {
+                sh 'ip a'
+            }
+        }
+stage('2 images') {
+            agent {
+                docker { image 'debian:latest' }
+            }
+            steps {
+                sh 'uname -a'
+            }
+        }
+stage('3 images') {
+            agent {
+                docker { image 'debian:latest' }
+            }
+            steps {
+                sh 'ip a'
+            }
+        }
+        
+
+//--------------------------------------------------End stages
+    }
+//--------------------------------------------------End pipline
+}
