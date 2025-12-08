@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debian-latest
+spec:
+  containers:
+  - name: debian
+    image: debian:latest
+    ports:
+    - containerPort: 80
