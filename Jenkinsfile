@@ -1,5 +1,9 @@
 pipeline {
    agent {
+	   
+	   //
+	   //--Памятка себе. Таким образом он дыает создать только POD не более!!!
+	   //
       kubernetes {
          yaml '''
             kind: Deployment
