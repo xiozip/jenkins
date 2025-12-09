@@ -3,10 +3,12 @@ pipeline {
 	   
 	   //
 	   //--Памятка себе. Таким образом он дыает создать только POD не более!!!
+	   // В API apps/v1beta1 создаются Deployment 
 	   //
       kubernetes {
          yaml '''
-            kind: Deployment
+           apiVersion: apps/v1beta1
+		  kind: Deployment
             metadata:
             name: debian-latest
             spec:
