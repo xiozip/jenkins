@@ -1,14 +1,13 @@
 pipeline {
    agent {
-	   
-	   //
-	   //--Памятка себе. Таким образом он дыает создать только POD не более!!!
-	   // В API apps/v1beta1 создаются Deployment 
-	   //
+          //
+          //--Памятка себе. Таким образом он дыает создать только POD не более!!!
+          // В API apps/v1beta1 создаются Deployment 
+         //
       kubernetes {
          yaml '''
            apiVersion: apps/v1beta1
-		  kind: Deployment
+           kind: Deployment
             metadata:
             name: debian-latest
             spec:
