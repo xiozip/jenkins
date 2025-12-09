@@ -11,30 +11,23 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   labels:
-    app: web
+    app: nginx
 spec:
+  replicas: 3
   selector:
     matchLabels:
-      app: web
-  replicas: 5
-  strategy:
-    type: RollingUpdate
+      app: nginx
   template:
     metadata:
       labels:
-        app: web
+        app: nginx
     spec:
       containers:
-       —name: nginx
-          image: debian:latest
-          resources:
-            limits:
-              memory: 200Mi
-            requests:
-              cpu: 100m
-              memory: 200Mi
-          ports:
-           —containerPort: 80
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+
             '''
        }
     }
