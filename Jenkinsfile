@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
        —name: nginx
-          image: nginx
+          image: debian:latest
           resources:
             limits:
               memory: 200Mi
